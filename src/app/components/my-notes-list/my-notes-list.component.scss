@@ -1,4 +1,28 @@
 .main-div
 {
     height: 500px;
+    text-align: left;
+}
+
+.item-div
+{
+    //background-color: red;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 25px;
+    padding: 12px 15px;
+}
+
+.item-div:hover
+{
+    background-color: #dcdcdc;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0.3; }
+    to   { opacity: 1; }
 }
