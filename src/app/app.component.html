@@ -1,28 +1,28 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="main-div" style="text-align:center">
-  
-  <div class="header-div">
-    <header>
-      {{ heading }}
-    </header>
-  </div>
+<div class="header-div" style="text-align:center">
+  <mn-my-notes-header></mn-my-notes-header>
+</div>
 
+<div class="main-div container">
   <h1>
     Welcome to {{ title }}
   </h1>
 
   <mn-my-notes-app></mn-my-notes-app>
 
-  <div class="my-notes-app-div">
-    <div class="my-notes-list-div">
+  <div class="row">
+    
+    <div class="col-md-4 h-75">
       <mn-my-notes-list></mn-my-notes-list>
     </div>
 
-    <div class="my-notes-editor-div">
+    <div class="col-md-8 h-75">
       <mn-my-notes-editor></mn-my-notes-editor>
     </div>
   </div>
 
 </div>
+
+<mn-my-notes-footer></mn-my-notes-footer>
 
 <router-outlet></router-outlet>
