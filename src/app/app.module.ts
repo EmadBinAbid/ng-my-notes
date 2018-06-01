@@ -9,6 +9,7 @@ import { MyNotesEditorComponent } from './components/my-notes-editor/my-notes-ed
 import { MyNotesHeaderComponent } from './components/my-notes-header/my-notes-header.component';
 import { MyNotesFooterComponent } from './components/my-notes-footer/my-notes-footer.component';
 import { MyNotesLoginComponent } from './components/my-notes-login/my-notes-login.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { MyNotesLoginComponent } from './components/my-notes-login/my-notes-logi
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
