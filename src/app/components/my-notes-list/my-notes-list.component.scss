@@ -4,6 +4,12 @@
     text-align: left;
 }
 
+.list-items
+{
+    height: 500px;
+    overflow: auto;
+}
+
 .item-div
 {
     //background-color: red;
@@ -26,3 +32,4 @@
     from { opacity: 0.3; }
     to   { opacity: 1; }
 }
+
