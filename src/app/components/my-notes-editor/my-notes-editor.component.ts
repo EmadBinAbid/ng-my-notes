@@ -28,7 +28,14 @@ export class MyNotesEditorComponent implements OnInit {
       {
         this.editorService.updateNotesList(this.editorText, this.currentNoteIndex);
       }
-    })
+    });
+
+    this.saveService.$deleteObservable.subscribe((value) => {
+      if(value == true)
+      {
+        this.editorService.deleteNote(this.currentNoteIndex);
+      }
+    });
   }
 
   //Commented-out function may be used in further development.

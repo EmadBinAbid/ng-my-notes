@@ -17,6 +17,7 @@ import { MyNotesRegisterComponent } from './components/my-notes-register/my-note
 
 import { EditorService } from './services/EditorService/editor.service';
 import { LoginService } from './services/LoginService/login.service';
+import { SaveService } from './services/SaveService/save.service';
 
 const appRoutes: Routes = [
   { path: '', component: MyNotesLoginComponent },
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [LoginService, EditorService],
+  providers: [LoginService, EditorService, SaveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

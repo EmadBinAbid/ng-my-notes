@@ -31,10 +31,16 @@ export class EditorService {
     return this.notesList;
   }
 
-  //Receives a new note from MyNotesListComponent and adds it to the saved notes' array.
-  addNote(note)
+  //Receives a new note from MyNotesAppComponent and adds it to the saved notes' array.
+  addNewNote()
   {
-    this.notesList.push(note);
+    this.notesList.unshift(" ");  //Adds new note to the beginning of array.
+  }
+
+  //Deletes a note from this.notesList array after receiving prompt from MyNotesEditorComponent
+  deleteNote(index)
+  {
+    this.notesList.splice(index, 1);
   }
 
   //Saves the note text passed by MyNotesListComponent
@@ -53,4 +59,5 @@ export class EditorService {
   {
     this.notesList[index] = data;
   }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SaveService } from '../../services/SaveService/save.service';
+import { EditorService } from '../../services/EditorService/editor.service';
 
 @Component({
   selector: 'mn-my-notes-app',
@@ -10,7 +11,7 @@ export class MyNotesAppComponent implements OnInit {
 
   heading = "Notes";
 
-  constructor(private saveService: SaveService) { }
+  constructor(private editorSerive: EditorService, private saveService: SaveService) { }
 
   ngOnInit() {
     
@@ -20,6 +21,16 @@ export class MyNotesAppComponent implements OnInit {
   saveNote()
   {
     this.saveService.$saveSubject.next(true);
+  }
+
+  newNote()
+  {
+    this.editorSerive.addNewNote();
+  }
+
+  deleteNote()
+  {
+    this.saveService.$deleteSubject.next(true);
   }
 
 }
