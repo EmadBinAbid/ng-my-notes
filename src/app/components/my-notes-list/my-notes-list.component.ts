@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditorService } from '../../services/EditorService/editor.service';
 
 @Component({
   selector: 'mn-my-notes-list',
@@ -7,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyNotesListComponent implements OnInit {
 
-  myNotesList = ["Emad", "How are you", "Okay", "Fine"];
+  notesList = [];
+  currentNote: number = null;
 
-  constructor() { }
+  constructor(private editorService: EditorService) { }
 
   ngOnInit() {
+    this.notesList = this.editorService.getNotesList();
+  }
+
+  setCurrentNote(index)
+  {
+    this.currentNote = index;
+    console.log(this.currentNote);
+    this.editorService.sendNote(this.notesList[this.currentNote]);
   }
 
 }

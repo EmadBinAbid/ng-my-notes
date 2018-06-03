@@ -2,7 +2,7 @@
   
   <div class="list-items">
     
-    <div class="item-div" *ngFor="let item of myNotesList">
+    <div class="item-div" *ngFor="let item of notesList; let i=index" (click)="setCurrentNote(i)">
       {{item}}
     </div>
 

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../services/LoginService/login.service';
 
 @Component({
   selector: 'mn-my-notes-header',
   templateUrl: './my-notes-header.component.html',
   styleUrls: ['./my-notes-header.component.scss']
 })
+
 export class MyNotesHeaderComponent implements OnInit {
 
   heading = 'MyNotes';

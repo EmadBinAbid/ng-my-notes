@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditorService } from '../../services/EditorService/editor.service';
 
 @Component({
   selector: 'mn-my-notes-editor',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyNotesEditorComponent implements OnInit {
 
-  constructor() { }
+  editorText: string = "";
+
+  constructor(private editorService: EditorService) { }
 
   ngOnInit() {
+  }
+
+  getText()
+  {
+    this.editorText = this.editorService.receiveNote();
+    console.log(this.editorText);
+
   }
 
 }
