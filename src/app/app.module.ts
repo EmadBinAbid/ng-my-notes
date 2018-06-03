@@ -18,6 +18,7 @@ import { MyNotesRegisterComponent } from './components/my-notes-register/my-note
 import { EditorService } from './services/EditorService/editor.service';
 import { LoginService } from './services/LoginService/login.service';
 import { SaveService } from './services/SaveService/save.service';
+import { LimitToPipe } from './pipes/limit-to.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: MyNotesLoginComponent },
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     MyNotesHeaderComponent,
     MyNotesFooterComponent,
     MyNotesLoginComponent,
-    MyNotesRegisterComponent
+    MyNotesRegisterComponent,
+    LimitToPipe
   ],
   imports: [
     BrowserModule,

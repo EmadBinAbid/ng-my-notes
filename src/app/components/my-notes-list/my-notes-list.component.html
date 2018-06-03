@@ -4,7 +4,7 @@
     
     <div class="item-div" *ngFor="let item of notesList; let i=index" (click)="setCurrentNote(i)" title="
     Created On: {{item.createdOn}}">
-      {{item.note}}
+      {{item.note | limitTo : 20}}
       <div class="date-div">
           <!--Created: {{item.createdOn}}<br>-->
           Last updated: {{item.updatedOn}}
