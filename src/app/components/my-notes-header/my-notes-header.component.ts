@@ -14,7 +14,7 @@ export class MyNotesHeaderComponent implements OnInit {
   anchorState = false;
 
   anchorName = 'Login';
-  anchorHref  = '#';
+  anchorHref  = 'login';
   anchorTitle = 'Login';
 
   constructor(private loginService: LoginService) { }
@@ -24,14 +24,14 @@ export class MyNotesHeaderComponent implements OnInit {
       if(value == true)
       {
         this.anchorName = 'Logout';
-        this.anchorHref = '#';
+        this.anchorHref = 'logout';
         this.anchorTitle = 'Logout';
 
       }
       else if(value == false)
       {
         this.anchorName = 'Login';
-        this.anchorHref = '#';
+        this.anchorHref = 'login';
         this.anchorTitle = 'Login';
         
       }

@@ -1,13 +1,31 @@
 <div class="main-div container">
-  <div class="heading-div row">
-    <h2 class="col-md-8">{{ heading }}</h2>
+  
+    <div class="my-notes-header row">
+        <h2 class="col-md-8">{{ heading }}</h2>
+    
+        <a href="#" data-toggle="tooltip" data-placement="auto" title="Add image"><i class="fa fa-image fa-2x col-md-1" style="color: black;"></i></a>
+        <a href="#" data-toggle="tooltip" data-placement="auto" title="Remove"><i class="fa fa-trash fa-2x col-md-1" style="color: black;"></i></a>
+        <a href="#" data-toggle="tooltip" data-placement="auto" title="Save"><i class="fa fa-save fa-2x col-md-1" style="color: black;"></i></a>
+        <a href="#" data-toggle="tooltip" data-placement="auto" title="Add"><i class="fa fa-plus fa-2x col-md-1" style="color: black;"></i></a>  
+    </div>
 
-    
-    <a href="#" data-toggle="tooltip" data-placement="auto" title="Add image"><i class="fa fa-image fa-2x col-md-1" style="color: black;"></i></a>
-    <a href="#" data-toggle="tooltip" data-placement="auto" title="Remove"><i class="fa fa-trash fa-2x col-md-1" style="color: black;"></i></a>
-    <a href="#" data-toggle="tooltip" data-placement="auto" title="Save"><i class="fa fa-save fa-2x col-md-1" style="color: black;"></i></a>
-    <a href="#" data-toggle="tooltip" data-placement="auto" title="Add"><i class="fa fa-plus fa-2x col-md-1" style="color: black;"></i></a>
-    
-    
+  <div class="row">
+
+    <div class="container">
+        
+      
+        <div class="row">
+          
+          <div class="col-md-4 h-75">
+            <mn-my-notes-list></mn-my-notes-list>
+          </div>
+      
+          <div class="col-md-8 h-75">
+            <mn-my-notes-editor></mn-my-notes-editor>
+          </div>
+        </div>
+      
+      </div>
+      
   </div>
 </div>

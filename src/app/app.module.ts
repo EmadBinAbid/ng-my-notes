@@ -16,7 +16,12 @@ import { LoginService } from './services/login.service';
 import { MyNotesRegisterComponent } from './components/my-notes-register/my-notes-register.component';
 
 const appRoutes: Routes = [
-  { path: '', component: MyNotesRegisterComponent }
+  { path: '', component: MyNotesLoginComponent },
+  { path: 'login/myNotes', redirectTo: 'myNotes', pathMatch: 'full' },
+  { path: 'myNotes', component: MyNotesAppComponent },
+  { path: 'login', component: MyNotesLoginComponent },
+  { path: 'register', component: MyNotesRegisterComponent }
+  
 ];
 
 @NgModule({
