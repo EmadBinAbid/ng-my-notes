@@ -12,6 +12,9 @@ export class EditorService {
   $editorSubject: BehaviorSubject<string> = new BehaviorSubject(null);
   $editorObservable: Observable<string>;
 
+  $currentNoteIndexSubject: BehaviorSubject<number> = new BehaviorSubject(null);
+  $currentNoteIndex: Observable<number>;
+
   notesList = ["Hi", "Emad", "Hey", "Hello", "Sample"];
 
   //Holds list's text for further passing to MyNotesEditorComponent
@@ -19,6 +22,7 @@ export class EditorService {
 
   constructor() { 
     this.$editorObservable = this.$editorSubject.asObservable();
+    this.$currentNoteIndex = this.$currentNoteIndexSubject.asObservable();
   }
 
   //Returns all the saved notes to the MyNotesListComponent.
@@ -43,5 +47,10 @@ export class EditorService {
   receiveNote()
   {
     return this.noteHolder;
+  }
+
+  updateNotesList(data, index)
+  {
+    this.notesList[index] = data;
   }
 }

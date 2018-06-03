@@ -1,12 +1,12 @@
 <div class="main-div container">
   
     <div class="my-notes-header row">
-        <h2 class="col-md-8">{{ heading }}</h2>
+        <h2 class="col-md-8" style="color: white;">{{ heading }}</h2>
     
-        <a href="#" data-toggle="tooltip" data-placement="auto" title="Add image"><i class="fa fa-image fa-2x col-md-1" style="color: black;"></i></a>
-        <a href="#" data-toggle="tooltip" data-placement="auto" title="Remove"><i class="fa fa-trash fa-2x col-md-1" style="color: black;"></i></a>
-        <a href="#" data-toggle="tooltip" data-placement="auto" title="Save"><i class="fa fa-save fa-2x col-md-1" style="color: black;"></i></a>
-        <a href="#" data-toggle="tooltip" data-placement="auto" title="Add"><i class="fa fa-plus fa-2x col-md-1" style="color: black;"></i></a>  
+        <a href="#" data-toggle="tooltip" data-placement="auto" title="Add image"><i class="fa fa-image fa-2x col-md-1" style="color: #ff5c33;"></i></a>
+        <a href="#" data-toggle="tooltip" data-placement="auto" title="Remove"><i class="fa fa-trash fa-2x col-md-1" style="color: #e60000;"></i></a>
+        <a (click)="saveNote()" data-toggle="tooltip" data-placement="auto" title="Save"><i class="fa fa-save fa-2x col-md-1" style="color: #0000b3;"></i></a>
+        <a href="#" data-toggle="tooltip" data-placement="auto" title="Add"><i class="fa fa-plus fa-2x col-md-1" style="color: #00e600;"></i></a>  
     </div>
 
   <div class="row">

@@ -24,6 +24,7 @@ export class MyNotesListComponent implements OnInit {
     this.editorService.sendNote(this.notesList[this.currentNote]);
 
     //
+    this.editorService.$currentNoteIndexSubject.next(this.currentNote);
     this.editorService.$editorSubject.next(this.notesList[this.currentNote]);
   }
 
