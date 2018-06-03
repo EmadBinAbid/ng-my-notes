@@ -13,13 +13,16 @@ export class MyNotesEditorComponent implements OnInit {
   constructor(private editorService: EditorService) { }
 
   ngOnInit() {
+    this.editorService.$editorObservable.subscribe((value) => {
+      this.editorText = value;
+    });
   }
 
-  getText()
+  //Commented-out function may be used in further development.
+  /*getText()
   {
     this.editorText = this.editorService.receiveNote();
     console.log(this.editorText);
-
-  }
+  }*/
 
 }
