@@ -1,11 +1,12 @@
 <div class="main-div container-fluid">
   <div class="row">
     <img src="../../assets/img/logo.png" alt="logo" class="img-responsive col-md-1">
-    <div class="heading-div col-md-10">
+    <div class="heading-div col-md-9">
       <h1>{{ heading }}</h1>
     </div>
 
     <a href="{{anchorHref}}" title="{{anchorTitle}}" (click)="changeState()" class="col-md-1">{{anchorName}}</a>
+    <a href="{{anchorHref}}" title="{{anchorTitle}}" (click)="changeState()" class="col-md-1" *ngIf="!anchorState">Register</a>
 
   </div>
   

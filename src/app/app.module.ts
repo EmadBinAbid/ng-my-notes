@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { RouterModule, Routes } from '@angular/router';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MyNotesAppComponent } from './components/my-notes-app/my-notes-app.component';
@@ -11,6 +13,12 @@ import { MyNotesFooterComponent } from './components/my-notes-footer/my-notes-fo
 import { MyNotesLoginComponent } from './components/my-notes-login/my-notes-login.component';
 import { LoginService } from './services/login.service';
 
+import { MyNotesRegisterComponent } from './components/my-notes-register/my-notes-register.component';
+
+const appRoutes: Routes = [
+  { path: '', component: MyNotesRegisterComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,11 +27,13 @@ import { LoginService } from './services/login.service';
     MyNotesEditorComponent,
     MyNotesHeaderComponent,
     MyNotesFooterComponent,
-    MyNotesLoginComponent
+    MyNotesLoginComponent,
+    MyNotesRegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
