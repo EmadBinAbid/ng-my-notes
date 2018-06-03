@@ -15,7 +15,13 @@ export class EditorService {
   $currentNoteIndexSubject: BehaviorSubject<number> = new BehaviorSubject(null);
   $currentNoteIndex: Observable<number>;
 
-  notesList = ["Hi", "Emad", "Hey", "Hello", "Sample"];
+  notesList = [
+    {"note": "Hi", "createdOn": new Date(), "updatedOn": new Date()}, 
+    {"note": "Emad", "createdOn": new Date(), "updatedOn": new Date()},
+    {"note": "Hey", "createdOn": new Date(), "updatedOn": new Date()}, 
+    {"note": "Hello", "createdOn": new Date(), "updatedOn": new Date()}, 
+    {"note": "Sample", "createdOn": new Date(), "updatedOn": new Date()},
+    ];
 
   //Holds list's text for further passing to MyNotesEditorComponent
   noteHolder: string = null;
@@ -34,7 +40,7 @@ export class EditorService {
   //Receives a new note from MyNotesAppComponent and adds it to the saved notes' array.
   addNewNote()
   {
-    this.notesList.unshift(" ");  //Adds new note to the beginning of array.
+    this.notesList.unshift({"note": " ", "createdOn": new Date(), "updatedOn": new Date()});  //Adds new note to the beginning of array.
   }
 
   //Deletes a note from this.notesList array after receiving prompt from MyNotesEditorComponent
@@ -57,7 +63,8 @@ export class EditorService {
 
   updateNotesList(data, index)
   {
-    this.notesList[index] = data;
+    this.notesList[index]["note"] = data;
+    this.notesList[index]["updatedOn"] = new Date();
   }
 
 }

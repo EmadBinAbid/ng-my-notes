@@ -2,8 +2,13 @@
   
   <div class="list-items">
     
-    <div class="item-div" *ngFor="let item of notesList; let i=index" (click)="setCurrentNote(i)">
-      {{item}}
+    <div class="item-div" *ngFor="let item of notesList; let i=index" (click)="setCurrentNote(i)" title="
+    Created On: {{item.createdOn}}">
+      {{item.note}}
+      <div class="date-div">
+          <!--Created: {{item.createdOn}}<br>-->
+          Last updated: {{item.updatedOn}}
+      </div>
     </div>
 
   </div>
