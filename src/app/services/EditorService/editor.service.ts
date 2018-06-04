@@ -40,7 +40,7 @@ export class EditorService {
   //Receives a new note from MyNotesAppComponent and adds it to the saved notes' array.
   addNewNote()
   {
-    this.notesList.unshift({"note": " ", "createdOn": new Date(), "updatedOn": new Date()});  //Adds new note to the beginning of array.
+    this.notesList.unshift({"note": "<New note>", "createdOn": new Date(), "updatedOn": new Date()});  //Adds new note to the beginning of array.
   }
 
   //Deletes a note from this.notesList array after receiving prompt from MyNotesEditorComponent

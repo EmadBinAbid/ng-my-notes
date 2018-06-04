@@ -21,6 +21,8 @@ export class MyNotesEditorComponent implements OnInit {
 
     this.editorService.$currentNoteIndex.subscribe((value) => {
       this.currentNoteIndex = value;
+
+      (<HTMLInputElement> document.getElementById("editor")).disabled = false;
     });
 
     this.saveService.$saveObservable.subscribe((value) => {
