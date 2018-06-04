@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+//import { Popup } from 'ng2-opd-popup';
+
 import { EditorService } from '../../services/EditorService/editor.service';
 import { SaveService } from '../../services/SaveService/save.service';
 
@@ -8,6 +10,8 @@ import { SaveService } from '../../services/SaveService/save.service';
   styleUrls: ['./my-notes-editor.component.scss']
 })
 export class MyNotesEditorComponent implements OnInit {
+
+  //@ViewChild('popupSave') popupSave: Popup;
 
   editorText: string = "";
   currentNoteIndex: number = null;
@@ -26,9 +30,16 @@ export class MyNotesEditorComponent implements OnInit {
     });
 
     this.saveService.$saveObservable.subscribe((value) => {
-      if(value == true)
+      if(value == true && this.currentNoteIndex != null)
       {
         this.editorService.updateNotesList(this.editorText, this.currentNoteIndex);
+
+        // Success Popup Code
+      }
+      else if(this.currentNoteIndex == null)
+      {
+        //Failure Popup Code
+        
       }
     });
 

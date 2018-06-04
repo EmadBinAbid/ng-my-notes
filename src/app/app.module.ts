@@ -22,7 +22,10 @@ import { LimitToPipe } from './pipes/limit-to.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: MyNotesLoginComponent },
+  { path: 'login/register', redirectTo: 'register', pathMatch: 'full' },
+  { path: 'register/login', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login/myNotes', redirectTo: 'myNotes', pathMatch: 'full' },
+  //{ path: 'myNotes/logout', redirectTo: 'login', pathMatch: 'full' },
   { path: 'myNotes', component: MyNotesAppComponent },
   { path: 'login', component: MyNotesLoginComponent },
   { path: 'register', component: MyNotesRegisterComponent }
