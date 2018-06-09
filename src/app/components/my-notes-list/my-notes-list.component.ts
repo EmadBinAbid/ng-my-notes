@@ -8,13 +8,21 @@ import { EditorService } from '../../services/EditorService/editor.service';
 })
 export class MyNotesListComponent implements OnInit {
 
-  notesList = [];
+  notesList: Array<any>;
   currentNote: number = null;
 
   constructor(private editorService: EditorService) { }
 
   ngOnInit() {
-    this.notesList = this.editorService.getNotesList();
+    this.editorService.getNotesList().subscribe((response:any[]) => 
+      {
+        console.log(response);
+        this.notesList = response;
+        
+      }, 
+      (err) => {console.log(err);},
+      () => { console.log("Success"); }
+    );
   }
 
   setCurrentNote(index)
@@ -25,7 +33,7 @@ export class MyNotesListComponent implements OnInit {
 
     //
     this.editorService.$currentNoteIndexSubject.next(this.currentNote);
-    this.editorService.$editorSubject.next(this.notesList[this.currentNote].note);
+    this.editorService.$editorSubject.next(this.notesList[this.currentNote].noteText);
   }
 
 }
