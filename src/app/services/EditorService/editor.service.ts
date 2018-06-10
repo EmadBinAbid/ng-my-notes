@@ -31,7 +31,7 @@ export class EditorService {
   noteId: string;
   currentNoteData: string;
 
-  notesList = [
+  /*notesList = [
     {
       noteText: "Sample 1", createdOn: new Date(), updatedOn: new Date()
     },
@@ -41,7 +41,7 @@ export class EditorService {
     {
       noteText: "Sample 3", createdOn: new Date(), updatedOn: new Date()
     },
-  ];
+  ];*/
 
   //Holds list's text for further passing to MyNotesEditorComponent
   noteHolder: string = null;
