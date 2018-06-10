@@ -10,6 +10,7 @@ export class MyNotesListComponent implements OnInit {
 
   notesList: Array<any>;
   currentNote: number = null;
+  currentNoteId: string = null;
 
   constructor(private editorService: EditorService) { }
 
@@ -29,11 +30,16 @@ export class MyNotesListComponent implements OnInit {
   {
     this.currentNote = index;
     console.log(this.currentNote);
+
+    this.currentNoteId = this.notesList[index].noteId;
+
     this.editorService.sendNote(this.notesList[this.currentNote]);
 
     //
     this.editorService.$currentNoteIndexSubject.next(this.currentNote);
     this.editorService.$editorSubject.next(this.notesList[this.currentNote].noteText);
+    this.editorService.$noteIdSubject.next(this.currentNoteId);
+
   }
 
 }
