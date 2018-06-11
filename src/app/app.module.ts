@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatButtonModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MyNotesAppComponent } from './components/my-notes-app/my-notes-app.component';
 import { MyNotesListComponent } from './components/my-notes-list/my-notes-list.component';
@@ -50,7 +53,11 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [LoginService, EditorService, SaveService],
   bootstrap: [AppComponent]

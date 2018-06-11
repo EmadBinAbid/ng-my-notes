@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mn-my-notes-register',
@@ -14,22 +10,32 @@ const httpOptions = {
 })
 export class MyNotesRegisterComponent implements OnInit {
 
-  username: string = null;
-  password: string = null;
+  registerForm: FormGroup;
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.createForm();
+  }
+
+  createForm()
+  {
+    this.registerForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   registerUser()
   {
-    var newUserObject = {
-      "userId": this.username,
-      "password": this.password
-    };
-    this.http.post('http://127.0.0.1:3000/authentication', newUserObject, httpOptions)
-    .subscribe((value)=>{});
+    if(this.registerForm.status  === "VALID")
+    {
+      console.log("User registered.");
+    }
+    else
+    {
+      alert("Username and Password are required fields!");
+    }
   }
 
 }

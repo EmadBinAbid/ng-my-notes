@@ -15,7 +15,6 @@ export class MyNotesEditorComponent implements OnInit {
 
   editorText: string = "";
   currentNoteIndex: number = null;
-  currentNoteId: string = null;
 
   constructor(private editorService: EditorService, private saveService: SaveService) { }
 
@@ -23,10 +22,6 @@ export class MyNotesEditorComponent implements OnInit {
     this.editorService.$editorObservable.subscribe((value) => {
       this.editorText = value;
     });
-
-    this.editorService.$noteIdObservable.subscribe((value) => {
-      this.currentNoteId = value;
-    })
 
     this.editorService.$currentNoteIndex.subscribe((value) => {
       this.currentNoteIndex = value;
@@ -37,7 +32,7 @@ export class MyNotesEditorComponent implements OnInit {
     this.saveService.$saveObservable.subscribe((value) => {
       if(value == true && this.currentNoteIndex != null)
       {
-        this.editorService.updateNotesList(this.editorText, this.currentNoteIndex, this.currentNoteId);
+        this.editorService.updateNotesList(this.editorText, this.currentNoteIndex);
 
         // Success Popup Code
       }
@@ -51,7 +46,7 @@ export class MyNotesEditorComponent implements OnInit {
     this.saveService.$deleteObservable.subscribe((value) => {
       if(value == true)
       {
-        this.editorService.deleteNote(this.currentNoteIndex, this.currentNoteId);
+        this.editorService.deleteNote(this.currentNoteIndex);
       }
     });
   }

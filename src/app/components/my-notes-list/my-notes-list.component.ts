@@ -8,38 +8,24 @@ import { EditorService } from '../../services/EditorService/editor.service';
 })
 export class MyNotesListComponent implements OnInit {
 
-  notesList: Array<any>;
+  notesList = [];
   currentNote: number = null;
-  currentNoteId: string = null;
 
   constructor(private editorService: EditorService) { }
 
   ngOnInit() {
-    this.editorService.getNotesList().subscribe((response:any[]) => 
-      {
-        console.log(response);
-        this.notesList = response;
-        
-      }, 
-      (err) => {console.log(err);},
-      () => { console.log("Success"); }
-    );
+    this.notesList = this.editorService.getNotesList();
   }
 
   setCurrentNote(index)
   {
     this.currentNote = index;
     console.log(this.currentNote);
-
-    this.currentNoteId = this.notesList[index].noteId;
-
     this.editorService.sendNote(this.notesList[this.currentNote]);
 
     //
     this.editorService.$currentNoteIndexSubject.next(this.currentNote);
-    this.editorService.$editorSubject.next(this.notesList[this.currentNote].noteText);
-    this.editorService.$noteIdSubject.next(this.currentNoteId);
-
+    this.editorService.$editorSubject.next(this.notesList[this.currentNote].note);
   }
 
 }

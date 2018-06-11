@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Router } from  '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { HttpClient } from  '@angular/common/http';
-import { EditorService } from '../../services/EditorService/editor.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mn-my-notes-login',
@@ -12,26 +10,38 @@ import { EditorService } from '../../services/EditorService/editor.service';
 })
 export class MyNotesLoginComponent implements OnInit {
 
-  username: string;
-  password: string;
+  loginForm: FormGroup;
 
-  constructor(private http: HttpClient, private editorService: EditorService, private router: Router) { }
+  constructor(private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.createForm();
+    console.log(this.loginForm);
+  }
+
+  createForm()
+  {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   validateUser()
   {
-    this.http.get(`http://127.0.0.1:3000/authentication-user?userId=${this.username}&password=${this.password}`).subscribe((isValid) => 
+    if(this.loginForm.status === "VALID")
     {
-      if(isValid == true)
-      {
-        //Allow access. Change header.
-        this.editorService.setUsername(this.username);
-        console.log("HUrrahhh");
-        this.router.navigate(['myNotes']);
-      }
-    });
+      console.log(true);
+    }
+    else
+    {
+      alert("Username and Password are required fields!");
+    }
+  }
+
+  loginUser()
+  {
+    this.router.navigate(['myNotes']);
   }
 
 }

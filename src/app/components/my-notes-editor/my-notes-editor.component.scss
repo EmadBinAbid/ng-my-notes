@@ -18,14 +18,3 @@ textarea
     border-right: none;
     outline: none;
 }
-
-#editor
-{
-    background-color: #ffffff;
-    animation: fadein 1s;
-}
-
-@keyframes fadein {
-    from { opacity: 0.1; }
-    to   { opacity: 1; }
-}

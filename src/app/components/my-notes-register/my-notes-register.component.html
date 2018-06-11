@@ -12,11 +12,15 @@
 
         <div class="login-div col-md-4">
             <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control form-elements" placeholder="Username" [(ngModel)]="username">
-                <label>Password</label>
-                <input type="password" class="form-control form-elements" placeholder="Password" [(ngModel)]="password">
-                <button type="button" (click)="registerUser()" class="form-control buttons form-elements">Register</button>
+                <form [formGroup]="registerForm">
+                    <label>Username</label>
+                    <input type="text" class="form-control form-elements" formControlName="username" placeholder="Username">
+        
+                    <label>Password</label>
+                    <input type="password" class="form-control form-elements" formControlName="password" placeholder="Password">
+                    <button type="submit" class="form-control buttons form-elements" (click)="registerUser()">Register</button>
+                </form>
+                
             </div>
             
             <div style="text-align: center;">
