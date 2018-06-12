@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,18 +18,23 @@ export class EditorService {
   $currentNoteIndexSubject: BehaviorSubject<number> = new BehaviorSubject(null);
   $currentNoteIndex: Observable<number>;
 
-  notesList = [
+  notesList = [];
+
+  /*notesList = [
     {"note": "Hi", "createdOn": new Date(), "updatedOn": new Date()}, 
     {"note": "Emad", "createdOn": new Date(), "updatedOn": new Date()},
     {"note": "Hey", "createdOn": new Date(), "updatedOn": new Date()}, 
     {"note": "Hello", "createdOn": new Date(), "updatedOn": new Date()}, 
     {"note": "Sample", "createdOn": new Date(), "updatedOn": new Date()},
-    ];
+    ];*/
 
   //Holds list's text for further passing to MyNotesEditorComponent
   noteHolder: string = null;
 
-  constructor() { 
+  constructor(
+    private http: HttpClient
+  ) { 
+
     this.$editorObservable = this.$editorSubject.asObservable();
     this.$currentNoteIndex = this.$currentNoteIndexSubject.asObservable();
   }
@@ -34,7 +42,18 @@ export class EditorService {
   //Returns all the saved notes to the MyNotesListComponent.
   getNotesList()
   {
-    return this.notesList;
+    //return this.notesList;
+    var headers = new HttpHeaders(
+      {'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('todo-app_token')}`
+      }
+    );
+
+    return this.http.get(`http://127.0.0.1:3000/get-my-notes`, { headers })
+    .pipe(
+    
+    );
+
   }
 
   //Receives a new note from MyNotesAppComponent and adds it to the saved notes' array.
