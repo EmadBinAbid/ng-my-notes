@@ -85,9 +85,21 @@ export class EditorService {
   }
 
   //Deletes a note from this.notesList array after receiving prompt from MyNotesEditorComponent
-  deleteNote(index)
+  deleteNote(index, id)
   {
-    this.notesList.splice(index, 1);
+    var headers = new HttpHeaders(
+      {'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('todo-app_token')}`
+      }
+    );
+
+    return this.http.delete(`http://127.0.0.1:3000/delete-my-notes/${id}`, { headers: headers })
+    .pipe(
+      tap((response) => {
+        this.notesList.splice(index, 1);
+        this.openSnackBar("Note deleted.", "Continue");
+      })
+    );
   }
 
   //Saves the note text passed by MyNotesListComponent

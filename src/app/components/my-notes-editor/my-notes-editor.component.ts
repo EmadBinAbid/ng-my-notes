@@ -39,7 +39,7 @@ export class MyNotesEditorComponent implements OnInit {
       {
         this.editorService.updateNotesList(this.editorText, this.currentNoteIndex, this.currentNoteId)
         .subscribe((value) => {
-          
+
         });
 
         // Success Popup Code
@@ -54,7 +54,10 @@ export class MyNotesEditorComponent implements OnInit {
     this.saveService.$deleteObservable.subscribe((value) => {
       if(value == true)
       {
-        this.editorService.deleteNote(this.currentNoteIndex);
+        this.editorService.deleteNote(this.currentNoteIndex, this.currentNoteId)
+        .subscribe((value) => {
+          
+        });
       }
     });
   }
