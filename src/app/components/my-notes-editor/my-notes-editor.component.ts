@@ -13,8 +13,9 @@ export class MyNotesEditorComponent implements OnInit {
 
   //@ViewChild('popupSave') popupSave: Popup;
 
-  editorText: string = "";
+  editorText: string = '';
   currentNoteIndex: number = null;
+  currentNoteId: string = '';
 
   constructor(private editorService: EditorService, private saveService: SaveService) { }
 
@@ -29,10 +30,17 @@ export class MyNotesEditorComponent implements OnInit {
       (<HTMLInputElement> document.getElementById("editor")).disabled = false;
     });
 
+    this.editorService.$currentNoteId.subscribe((value) => {
+      this.currentNoteId = value;
+    });
+
     this.saveService.$saveObservable.subscribe((value) => {
       if(value == true && this.currentNoteIndex != null)
       {
-        this.editorService.updateNotesList(this.editorText, this.currentNoteIndex);
+        this.editorService.updateNotesList(this.editorText, this.currentNoteIndex, this.currentNoteId)
+        .subscribe((value) => {
+          
+        });
 
         // Success Popup Code
       }

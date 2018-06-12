@@ -26,7 +26,9 @@ export class MyNotesAppComponent implements OnInit {
 
   newNote()
   {
-    this.editorSerive.addNewNote();
+    this.editorSerive.addNewNote().subscribe((value) => {
+      
+    });
   }
 
   deleteNote()
