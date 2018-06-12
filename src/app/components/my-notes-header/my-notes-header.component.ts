@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { LoginService } from '../../services/LoginService/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mn-my-notes-header',
@@ -14,43 +15,34 @@ export class MyNotesHeaderComponent implements OnInit {
 
   anchorState = false;
 
-  anchorName = 'Login';
-  anchorHref  = 'login';
-  anchorTitle = 'Login';
-
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.loginService.$login.subscribe((value) => {
       if(value == true)
       {
-        this.anchorName = 'Logout';
-        this.anchorHref = 'logout';
-        this.anchorTitle = 'Logout';
+        this.anchorState = true;
 
       }
       else if(value == false)
       {
-        this.anchorName = 'Login';
-        this.anchorHref = 'login';
-        this.anchorTitle = 'Login';
+        this.anchorState = false;
         
       }
     })
   }
 
-  changeState()
+  login()
   {
-    if (this.anchorState == true)
-    {
-      this.anchorState = false;
-      this.loginService.$loginSubject.next(false);
-    }
-    else
-    {
-      this.anchorState = true;
-      this.loginService.$loginSubject.next(true);
-    }
+    this.loginService.$loginSubject.next(false);
+    this.router.navigate(['login']);
+  }
+
+  logout()
+  {
+    this.loginService.logout();
+    this.loginService.$loginSubject.next(false);
+    this.router.navigate(['login']);
   }
 
 }

@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-import { MatButtonModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -23,17 +24,23 @@ import { EditorService } from './services/EditorService/editor.service';
 import { LoginService } from './services/LoginService/login.service';
 import { SaveService } from './services/SaveService/save.service';
 import { LimitToPipe } from './pipes/limit-to.pipe';
+import { RegistrationConfirmationComponent } from './components/registration-confirmation/registration-confirmation.component';
+import { AuthGuardGuard } from './guards/AuthGuard/auth-guard.guard';
+import { UsersComponent } from './components/users/users.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: MyNotesLoginComponent },
   { path: 'login/register', redirectTo: 'register', pathMatch: 'full' },
   { path: 'register/login', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login/myNotes', redirectTo: 'myNotes', pathMatch: 'full' },
-  //{ path: 'myNotes/logout', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'myNotes', component: MyNotesAppComponent },
+  { path: 'login/users', redirectTo: 'users', pathMatch: 'full' },
+  { path: 'users', component: UsersComponent },
+  { path: 'myNotes', canActivate: [AuthGuardGuard], component: MyNotesAppComponent },
   { path: 'login', component: MyNotesLoginComponent },
-  { path: 'register', component: MyNotesRegisterComponent }
-  
+  { path: 'register', component: MyNotesRegisterComponent },
+  { path: 'registration-confirmation/login', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'registration-confirmation', component: RegistrationConfirmationComponent }
 ];
 
 @NgModule({
@@ -46,7 +53,9 @@ const appRoutes: Routes = [
     MyNotesFooterComponent,
     MyNotesLoginComponent,
     MyNotesRegisterComponent,
-    LimitToPipe
+    LimitToPipe,
+    RegistrationConfirmationComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +66,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [LoginService, EditorService, SaveService],
   bootstrap: [AppComponent]

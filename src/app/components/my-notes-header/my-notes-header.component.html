@@ -5,9 +5,11 @@
       <h1>{{ heading }}</h1>
     </div>
 
-    <a routerLink="{{anchorHref}}" title="{{anchorTitle}}" (click)="changeState()" class="col-md-1">{{anchorName}}</a>
-    <a routerLink="register" title="Register" class="col-md-1" *ngIf="!anchorState">Register</a>
 
+    <a *ngIf="anchorState === false" (click)="login()" title="Login" class="col-md-1">Login</a>
+    <a *ngIf="anchorState === false" routerLink="register" title="Register" class="col-md-1">Register</a>
+
+    <a *ngIf="anchorState === true" (click)="logout()" title="Logout" class="col-md-1">Logout</a>
   </div>
   
   
