@@ -43,11 +43,20 @@ export class MyNotesRegisterComponent implements OnInit {
       this.loginService.register(this.registerForm.value)
       .subscribe((result) => {
         //this.loginUser();
-        this.openSnackBar("User registered successfully. You'are now logged in.", "Continue");
+        console.log(typeof result["status"]);
+        if(typeof result["status"] === "undefined")
+        {
+          this.openSnackBar("User registered successfully. You'are now logged in.", "Continue");
+        }
+        else
+        {
+          this.openSnackBar("Username already exists.", "Try again");
+        }
+        
       },
       (err) => 
       {
-        this.openSnackBar("Username already exists.", "Try again");
+        
       } 
         
       ); 

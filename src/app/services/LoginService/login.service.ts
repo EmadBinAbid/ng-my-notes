@@ -65,10 +65,19 @@ export class LoginService {
       ('http://127.0.0.1:3000/register', credentials)
       .pipe(
         tap((response) => {
-          console.log('Register API called.');
-          this.login(credentials).subscribe(() => {
+          //alert(response["status"]);
+          if(typeof response["status"] === "undefined")
+          {
+            console.log('Register API called.');
+            this.login(credentials).subscribe(() => {
             this.loginUser();
-          });
+            });
+          }
+          else
+          {
+
+          }
+          
         })
       );
     }
