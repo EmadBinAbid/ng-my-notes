@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatButtonModule, MatInputModule, MatSnackBarModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatSnackBarModule, MatDialogModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -27,6 +27,7 @@ import { LimitToPipe } from './pipes/limit-to.pipe';
 import { RegistrationConfirmationComponent } from './components/registration-confirmation/registration-confirmation.component';
 import { AuthGuardGuard } from './guards/AuthGuard/auth-guard.guard';
 import { UsersComponent } from './components/users/users.component';
+import { DeleteConfirmationDialogComponent } from './Dialogs/delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     MyNotesRegisterComponent,
     LimitToPipe,
     RegistrationConfirmationComponent,
-    UsersComponent
+    UsersComponent,
+    DeleteConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +70,11 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [LoginService, EditorService, SaveService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteConfirmationDialogComponent]
 })
 export class AppModule { }

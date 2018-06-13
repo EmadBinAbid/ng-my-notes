@@ -39,7 +39,9 @@ export class MyNotesEditorComponent implements OnInit {
       {
         this.editorService.updateNotesList(this.editorText, this.currentNoteIndex, this.currentNoteId)
         .subscribe((value) => {
-
+          this.saveService.$saveSubject.next(false);
+          this.currentNoteId = null;
+          this.currentNoteIndex = null;
         });
 
         // Success Popup Code
@@ -52,11 +54,13 @@ export class MyNotesEditorComponent implements OnInit {
     });
 
     this.saveService.$deleteObservable.subscribe((value) => {
-      if(value == true)
+      if(value == true && this.currentNoteIndex != null)
       {
         this.editorService.deleteNote(this.currentNoteIndex, this.currentNoteId)
         .subscribe((value) => {
-          
+          this.saveService.$deleteSubject.next(false);
+          this.currentNoteId = null;
+          this.currentNoteIndex = null;
         });
       }
     });

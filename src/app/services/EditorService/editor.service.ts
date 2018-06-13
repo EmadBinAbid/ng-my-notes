@@ -96,7 +96,10 @@ export class EditorService {
     return this.http.delete(`http://127.0.0.1:3000/delete-my-notes/${id}`, { headers: headers })
     .pipe(
       tap((response) => {
+        console.log("Hi");
         this.notesList.splice(index, 1);
+        index = null;
+        id = null;
         this.openSnackBar("Note deleted.", "Continue");
       })
     );
