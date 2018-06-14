@@ -13,11 +13,24 @@
         <div class="login-div col-md-4">
             <div class="form-group">
                 <form [formGroup]="registerForm">
-                    <label>Username</label>
-                    <input type="text" class="form-control form-elements" formControlName="userId" placeholder="Username">
+                    <label>First name</label>
+                    <input type="text" class="form-control form-elements" formControlName="firstName" placeholder="First name">
+
+                    <label>Last name</label>
+                    <input type="text" class="form-control form-elements" formControlName="lastName" placeholder="Last name">
+
+                    <label>Email</label>
+                    <input type="text" class="form-control form-elements" formControlName="userId" placeholder="Email">
         
                     <label>Password</label>
                     <input type="password" class="form-control form-elements" formControlName="password" placeholder="Password">
+                    
+                    <label>Age</label>
+                    <input type="number" class="form-control form-elements" formControlName="age" placeholder="Age">
+
+                    <label>Profession</label>
+                    <input type="text" class="form-control form-elements" formControlName="profession" placeholder="Profession">
+
                     <button type="submit" class="form-control buttons form-elements" (click)="registerUser()">Register</button>
                 </form>
                 

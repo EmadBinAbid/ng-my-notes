@@ -30,8 +30,12 @@ export class MyNotesRegisterComponent implements OnInit {
   createForm()
   {
     this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       userId: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      age: ['', Validators.required],
+      profession: ['', Validators.required]
     });
   }
 
@@ -50,7 +54,7 @@ export class MyNotesRegisterComponent implements OnInit {
         }
         else
         {
-          this.openSnackBar("Username already exists.", "Try again");
+          this.openSnackBar("Email already exists.", "Try again");
         }
         
       },
@@ -63,7 +67,7 @@ export class MyNotesRegisterComponent implements OnInit {
     }
     else
     {
-      alert("Username and Password are required fields!");
+      this.openSnackBar("All fields are required.", "Continue");
     }
   }
 

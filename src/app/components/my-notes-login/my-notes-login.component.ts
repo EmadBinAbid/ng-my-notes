@@ -42,17 +42,17 @@ export class MyNotesLoginComponent implements OnInit {
       .subscribe((result) => 
       {
         this.loginUser();
-        this.openSnackBar("Login successful!", "Continue");
+        this.openSnackBar("Login successful.", "Continue");
       },
       (err) => 
       {
-        this.openSnackBar("Invalid Username or Password!", "Try again");
+        this.openSnackBar("Invalid Email or Password!", "Try again");
       }
     );
     }
     else
     {
-      this.openSnackBar("Username and password are required fields!", "Continue");
+      this.openSnackBar("Email and password are required fields!", "Continue");
     }
 
     //this.loginUser();
