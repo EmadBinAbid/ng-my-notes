@@ -10,6 +10,7 @@ import { LoginResponse } from '../../interfaces/LoginResponse/login-response';
 
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class LoginService {
    login(credentials)
    {
      return this.http.post<LoginResponse>
-     (`http://127.0.0.1:3000/login?userId=${credentials.userId}&password=${credentials.password}`, {})
+     (`${environment.apiBaseUrl}/login?userId=${credentials.userId}&password=${credentials.password}`, {})
      .pipe(
        tap((response) => {
         
@@ -62,7 +63,7 @@ export class LoginService {
       console.log("In register()");
       console.log(credentials);
       return this.http.post
-      ('http://127.0.0.1:3000/register', credentials)
+      (`${environment.apiBaseUrl}/register`, credentials)
       .pipe(
         tap((response) => {
           //alert(response["status"]);

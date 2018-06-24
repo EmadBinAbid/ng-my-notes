@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,7 @@ export class EditorService {
       }
     );
 
-    return this.http.get(`http://127.0.0.1:3000/get-my-notes`, { headers })
+    return this.http.get(`${environment.apiBaseUrl}/get-my-notes`, { headers })
     .pipe(
       tap((response: Array<Object>) => {
         this.notesList = response;
@@ -74,7 +75,7 @@ export class EditorService {
       }
     );
 
-    return this.http.post(`http://127.0.0.1:3000/add-my-notes`, { "noteText": "<New note>" }, { headers: headers })
+    return this.http.post(`${environment.apiBaseUrl}/add-my-notes`, { "noteText": "<New note>" }, { headers: headers })
     .pipe(
       tap((response) => {
         //Adds new note to the beginning of array.
@@ -93,7 +94,7 @@ export class EditorService {
       }
     );
 
-    return this.http.delete(`http://127.0.0.1:3000/delete-my-notes/${id}`, { headers: headers })
+    return this.http.delete(`${environment.apiBaseUrl}/delete-my-notes/${id}`, { headers: headers })
     .pipe(
       tap((response) => {
         console.log("Hi");
@@ -125,7 +126,7 @@ export class EditorService {
       }
     );
 
-    return this.http.put(`http://127.0.0.1:3000/update-my-notes/${id}`, 
+    return this.http.put(`${environment.apiBaseUrl}/update-my-notes/${id}`, 
     {"noteText": data}, { headers: headers })
     .pipe(
       tap((reponse) => {
