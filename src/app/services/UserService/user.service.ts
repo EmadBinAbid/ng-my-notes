@@ -16,7 +16,7 @@ export class UserService {
     private http: HttpClient
   ) 
   {
-    this.http.get(`${environment.apiBaseUrl}/get-users`)
+    this.http.get(`${environment.apiBaseUrl}/users`)
     .subscribe((response) => {
       localStorage.setItem('my-notes_app', JSON.stringify(response));
     });
