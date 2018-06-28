@@ -62,7 +62,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
